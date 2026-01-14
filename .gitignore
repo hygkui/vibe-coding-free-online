@@ -1,1 +1,4 @@
 node_modules/
+# VuePress
+docs/.vuepress/dist/
+docs/.vuepress/.temp/
