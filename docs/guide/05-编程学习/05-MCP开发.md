@@ -2,7 +2,9 @@
 
 ## MCP 概述
 
-MCP（Model Context Protocol，模型上下文协议）是一种让 AI 模型与外部工具和数据源交互的标准化协议。它允许 AI 在执行任务时调用外部工具、访问外部数据，实现更强大的能力。
+MCP（Model Context Protocol，模型上下文协议）是 Anthropic 于 2024 年 11 月推出的一种让 AI 模型与外部工具和数据源交互的标准化协议。它被称为「AI 的 USB-C」，允许 AI 在执行任务时调用外部工具、访问外部数据，实现更强大的能力。
+
+截至 2025 年，MCP 已被 Claude、Gemini、OpenAI 等主流 AI 模型采用，Google Cloud 也宣布正式支持 MCP。
 
 ## MCP 的核心概念
 
@@ -11,6 +13,16 @@ MCP（Model Context Protocol，模型上下文协议）是一种让 AI 模型与
 传统 AI 对话的局限性：AI 只能基于训练数据回答，无法获取最新信息。AI 无法执行实际操作，如查询数据库、操作文件。AI 的回复可能过时或不准确。
 
 MCP 解决了这些问题：允许 AI 调用外部工具。允许 AI 访问实时数据。允许 AI 执行实际操作。
+
+### MCP 最新规范 (v2025-06-18)
+
+2025 年 6 月发布的 MCP 规范带来了重要更新：
+
+- **OAuth 2.0/2.1 认证**：增强安全性，将访问令牌绑定到特定 MCP 服务器
+- **结构化输出**：支持结构化 JSON 工具输出
+- **用户交互请求**：服务器可以通过 `elicitation/create` 请求在会话中请求用户输入
+- **资源链接**：新的 `resource_link` 类型允许工具指向 URI 而不是内联所有内容
+- **安全最佳实践**：提供全面的安全指南，防范令牌盗窃和混淆代理攻击
 
 ### MCP 的架构
 
@@ -28,7 +40,7 @@ MCP 采用客户端-服务器架构：**MCP 客户端**运行在 AI 应用中，
 
 ### 开发环境
 
-Node.js 环境（推荐 18+）。一个 MCP 客户端（如 Claude Desktop）。代码编辑器（VS Code）。
+Node.js 环境（推荐 20+）。一个 MCP 客户端（如 Claude Desktop、Cursor、VS Code + Claude 插件等）。代码编辑器（VS Code）。
 
 ### 基础项目结构
 
